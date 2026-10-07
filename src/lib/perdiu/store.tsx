@@ -47,7 +47,7 @@ interface Ctx {
   confirmReception: (id: string) => void;
   publish: (id: string) => number;
   setMatch: (matchId: string, status: Match["status"]) => void;
-  deliver: (d: { foundId: string; lostId?: string; name: string; email: string; code: string }) => void;
+  deliver: (d: { foundId: string; lostId?: string | undefined; name: string; email: string; code: string }) => void;
 }
 
 const StoreCtx = createContext<Ctx | null>(null);

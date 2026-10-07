@@ -5,7 +5,7 @@ import { USERS } from "@/lib/perdiu/data";
 import { useStore } from "@/lib/perdiu/store";
 import type { FoundItem } from "@/lib/perdiu/types";
 import { cn } from "@/lib/utils";
-import { Empty, Field, LevelChip, Row, StatusChip, Thumb, fmtDate } from "./ui";
+import { type Errs, Empty, Field, LevelChip, Row, StatusChip, Thumb, fmtDate } from "./ui";
 import { LostRows } from "./Community";
 
 type Sec = "solicitudes" | "custodia" | "perdidas" | "recojos" | "entrega";
@@ -344,12 +344,12 @@ function Pickups({ toDeliver }: { toDeliver: (p: Prefill) => void }) {
 function DeliveryForm({ prefill, done }: { prefill: Prefill; done: () => void }) {
   const { db, deliver } = useStore();
   const [v, setV] = useState({ foundId: prefill.foundId ?? "", lostId: prefill.lostId ?? "", name: prefill.name ?? "", email: prefill.email ?? "", code: prefill.code ?? "" });
-  const [err, setErr] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<Errs>({});
   const deliverable = db.found.filter((f) => f.status === "custodia" || f.status === "publicado");
   const f = deliverable.find((x) => x.id === v.foundId.trim().toUpperCase());
 
   const submit = () => {
-    const e: Record<string, string> = {};
+    const e: Errs = {};
     if (!f) e.foundId = "Ingresa el ID de un objeto en custodia o publicado.";
     if (!v.name.trim()) e.name = "Nombre obligatorio.";
     if (!/^[^@\s]+@universidad\.edu\.bo$/i.test(v.email.trim())) e.email = "Usa un correo institucional (@universidad.edu.bo).";

@@ -5,7 +5,7 @@ import { useStore } from "@/lib/perdiu/store";
 import type { FoundItem, LostReport } from "@/lib/perdiu/types";
 import { cn } from "@/lib/utils";
 import {
-  BackHeader, BienestarCard, Empty, Field, IdBlock, LevelChip, PhotoInput, Row, StatusChip, Thumb, fmtDate, nowLocal,
+  type Errs, BackHeader, BienestarCard, Empty, Field, IdBlock, LevelChip, PhotoInput, Row, StatusChip, Thumb, fmtDate, nowLocal,
 } from "./ui";
 
 type View =
@@ -401,10 +401,10 @@ function NewFound({ go }: { go: (v: View) => void }) {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [doneId, setDoneId] = useState("");
   const [f, setF] = useState({ photo: undefined as string | undefined, description: "", category: "", place: "", placeRef: "", date: nowLocal() });
-  const [err, setErr] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<Errs>({});
 
   const validate = () => {
-    const e: Record<string, string> = {};
+    const e: Errs = {};
     if (!f.description.trim()) e.description = "Describe el objeto.";
     if (!f.category) e.category = "Elige una categoría.";
     if (!f.place) e.place = "Elige el lugar.";
@@ -487,10 +487,10 @@ function NewLost({ go }: { go: (v: View) => void }) {
   const today = nowLocal().slice(0, 10);
   const [step, setStep] = useState<1 | 2>(1);
   const [f, setF] = useState({ photo: undefined as string | undefined, description: "", category: "", places: [] as string[], placesText: "", dateFrom: today, dateTo: today });
-  const [err, setErr] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<Errs>({});
 
   const validate = () => {
-    const e: Record<string, string> = {};
+    const e: Errs = {};
     if (!f.description.trim()) e.description = "Describe tu objeto.";
     if (!f.category) e.category = "Elige una categoría.";
     if (!f.places.length) e.places = "Elige al menos un lugar.";

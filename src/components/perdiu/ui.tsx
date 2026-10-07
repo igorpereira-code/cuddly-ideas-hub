@@ -205,3 +205,4 @@ export function Logo({ light }: { light?: boolean | undefined }) {
     </span>
   );
 }
+export type Errs = Partial<Record<"description" | "category" | "place" | "date" | "places" | "dates" | "foundId" | "name" | "email" | "code" | "lostId", string>>;
