@@ -16,7 +16,7 @@ type View =
   | { v: "newLost" }
   | { v: "item"; id: string }
   | { v: "myFound"; id: string }
-  | { v: "myLost"; id: string; fresh?: boolean };
+  | { v: "myLost"; id: string; fresh?: boolean | undefined };
 
 export function CommunityApp() {
   const [view, setView] = useState<View>({ v: "home" });
@@ -276,7 +276,7 @@ function FoundRows({ f }: { f: FoundItem }) {
   );
 }
 
-function MyLost({ id, back, fresh }: { id: string; back: () => void; fresh?: boolean }) {
+function MyLost({ id, back, fresh }: { id: string; back: () => void; fresh?: boolean | undefined }) {
   const { db, setMatch } = useStore();
   const l = db.lost.find((x) => x.id === id);
   if (!l) return null;

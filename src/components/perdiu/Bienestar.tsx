@@ -9,7 +9,7 @@ import { Empty, Field, LevelChip, Row, StatusChip, Thumb, fmtDate } from "./ui";
 import { LostRows } from "./Community";
 
 type Sec = "solicitudes" | "custodia" | "perdidas" | "recojos" | "entrega";
-interface Prefill { foundId?: string; lostId?: string; name?: string; email?: string; code?: string }
+interface Prefill { foundId?: string | undefined; lostId?: string | undefined; name?: string | undefined; email?: string | undefined; code?: string | undefined }
 
 export function BienestarApp() {
   const { db } = useStore();

@@ -4,7 +4,7 @@ export interface DemoUser {
   id: UserId;
   name: string;
   email: string;
-  code?: string;
+  code?: string | undefined;
   role: "comunidad" | "bienestar";
 }
 
@@ -15,11 +15,11 @@ export type MatchStatus = "sugerida" | "recoger" | "descartada";
 export interface FoundItem {
   id: string;
   finderId: UserId;
-  photo?: string;
+  photo?: string | undefined;
   description: string;
   category: string;
   place: string;
-  placeRef?: string;
+  placeRef?: string | undefined;
   date: string; // ISO
   status: FoundStatus;
   createdAt: string;
@@ -28,11 +28,11 @@ export interface FoundItem {
 export interface LostReport {
   id: string;
   ownerId: UserId;
-  photo?: string;
+  photo?: string | undefined;
   description: string;
   category: string;
   places: string[];
-  placesText?: string;
+  placesText?: string | undefined;
   dateFrom: string; // yyyy-mm-dd
   dateTo: string;
   status: LostStatus;
@@ -60,7 +60,7 @@ export interface Pickup {
 export interface Delivery {
   id: string;
   foundId: string;
-  lostId?: string;
+  lostId?: string | undefined;
   name: string;
   email: string;
   code: string;

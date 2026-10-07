@@ -52,7 +52,7 @@ export function LevelChip({ score }: { score: number }) {
   );
 }
 
-export function Thumb({ photo, category, className }: { photo?: string; category: string; className?: string }) {
+export function Thumb({ photo, category, className }: { photo?: string | undefined; category: string; className?: string | undefined }) {
   const Icon = catIcon(category);
   return photo ? (
     <img src={photo} alt={category} className={cn("rounded-xl object-cover", className)} />
@@ -63,7 +63,7 @@ export function Thumb({ photo, category, className }: { photo?: string; category
   );
 }
 
-export function BienestarCard({ compact }: { compact?: boolean }) {
+export function BienestarCard({ compact }: { compact?: boolean | undefined }) {
   return (
     <div className={cn("card flex gap-3 p-4", compact && "p-3")}>
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-300">
@@ -79,7 +79,7 @@ export function BienestarCard({ compact }: { compact?: boolean }) {
   );
 }
 
-export function IdBlock({ id, size = 140 }: { id: string; size?: number }) {
+export function IdBlock({ id, size = 140 }: { id: string; size?: number | undefined }) {
   return (
     <div className="card flex flex-col items-center gap-3 p-5">
       <p className="text-xs font-medium tracking-wide text-n-500 uppercase">ID de tu reporte</p>
@@ -91,7 +91,7 @@ export function IdBlock({ id, size = 140 }: { id: string; size?: number }) {
   );
 }
 
-export function PhotoInput({ value, onChange, label }: { value?: string; onChange: (v?: string) => void; label: string }) {
+export function PhotoInput({ value, onChange, label }: { value?: string | undefined; onChange: (v?: string) => void; label: string }) {
   return (
     <div>
       <span className="label">{label} <span className="font-normal text-n-500">(opcional)</span></span>
@@ -136,7 +136,7 @@ export function PhotoInput({ value, onChange, label }: { value?: string; onChang
   );
 }
 
-export function Field({ label, error, children, optional }: { label: string; error?: string; children: ReactNode; optional?: boolean }) {
+export function Field({ label, error, children, optional }: { label: string; error?: string | undefined; children: ReactNode; optional?: boolean | undefined }) {
   return (
     <div>
       <span className="label">
@@ -198,7 +198,7 @@ export function useToggle(init = false) {
   return useState(init);
 }
 
-export function Logo({ light }: { light?: boolean }) {
+export function Logo({ light }: { light?: boolean | undefined }) {
   return (
     <span className={cn("text-xl font-extrabold tracking-tight", light ? "text-n-0" : "text-brand-700")}>
       Perdi<span className="relative">-U<span className="absolute -bottom-0.5 left-0 h-1 w-full rounded bg-sun-500" /></span>
