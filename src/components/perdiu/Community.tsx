@@ -70,7 +70,7 @@ function HomeScreen({ go }: { go: (v: View) => void }) {
   return (
     <div className="space-y-5">
       <div>
-        <p className="text-sm text-n-500">¡Hola, {user.name.split(" ")[0]}! 👋</p>
+        <p className="text-sm text-n-500">¡Hola, {user.name.split(" ")[0]}!</p>
         <h1 className="mt-1 text-2xl leading-tight font-extrabold text-brand-700">
           ¿Lo perdi-U? <span className="bg-sun-500 px-1">¡Lo encontr-U!</span>
         </h1>
