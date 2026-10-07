@@ -37,7 +37,10 @@ const daysAgo = (n: number, h = 10) => {
   d.setHours(h, 15, 0, 0);
   return d.toISOString();
 };
-const dayStr = (n: number) => daysAgo(n).slice(0, 10);
+const dayStr = (n: number) => {
+  const d = new Date(daysAgo(n));
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
 
 export function seed(): DB {
   return {
