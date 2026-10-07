@@ -78,7 +78,7 @@ function HomeScreen({ go }: { go: (v: View) => void }) {
       </div>
 
       {nMatches > 0 && (
-        <button onClick={() => go({ v: "myLost", id: myLost[0].id })} className="flex w-full items-center gap-3 rounded-2xl bg-brand-500 p-4 text-left text-n-0">
+        <button onClick={() => go({ v: "myLost", id: myLost[0]!.id })} className="flex w-full items-center gap-3 rounded-2xl bg-brand-500 p-4 text-left text-n-0">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sun-500 text-brand-700">
             <Bell className="h-5 w-5" />
           </span>
